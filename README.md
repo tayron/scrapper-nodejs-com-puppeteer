@@ -1,4 +1,5 @@
 # scrapper nodejs com puppeteer
+Documentação: https://pptr.dev/
 POC de script pupperteer usando Nodejs com biblioteca Pupperteer e container docker
 
 # Rodando container

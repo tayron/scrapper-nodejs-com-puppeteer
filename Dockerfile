@@ -7,8 +7,6 @@ RUN set -x \
     && apk update \
     && apk upgrade \
     && apk add --no-cache \
-    udev \
-    ttf-freefont \
     chromium 
 
 WORKDIR /app

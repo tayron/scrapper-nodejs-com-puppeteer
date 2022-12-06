@@ -1,8 +1,6 @@
 var fs = require('fs');
 const puppeteer = require('puppeteer');
 
-const CHROME_BIN = '/usr/bin/chromium-browser';
-
 async function simplefileDownload() {
     try {
         const browser = await puppeteer.launch({
