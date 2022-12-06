@@ -26,24 +26,30 @@ async function simplefileDownload() {
         const client = await page.target().createCDPSession();
         await client.send('Page.setDownloadBehavior', {
             behavior: 'allow',
-            downloadPath: './',
+            downloadPath: '/app/upload',
         });
 
         await page.evaluate(() => document.querySelector('.wl5gA').click())
 
+        let numeroVerificacaoPermitida = 0
         var interval = setInterval(async function () {
-            if (fs.existsSync('alexander-grey-tn57JI3CewI-unsplash.jpg')) {
+            if (fs.existsSync('/app/upload/alexander-grey-tn57JI3CewI-unsplash.jpg')) {
                 console.warn('Download do arquivo realizado com sucesso!')
                 await browser.close();
                 clearInterval(interval);
             } else {
+                numeroVerificacaoPermitida ++
                 console.warn('Ainda não foi feito download do arquivo.')
+
+                if (numeroVerificacaoPermitida >= 5) {
+                    await browser.close();
+                    clearInterval(interval);
+                }
             }
         }, 1000)
     } catch (error) {
         console.error(error.message)
     }
-
 }
 
 simplefileDownload();
