@@ -17,6 +17,7 @@ RUN npm install puppeteer@1.10.0
 RUN rm -rf /var/cache/apk/*
 RUN rm -rf /tmp/*
 RUN rm -rf /var/log/*
-
+RUN npm cache verify
+RUN npm cache clean --force
 
 
